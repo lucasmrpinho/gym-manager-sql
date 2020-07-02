@@ -1,0 +1,22 @@
+{
+  "instructors": [
+    {
+      "id": 1,
+      "avatar_url": "https://google.com",
+      "name": "Lucas Montarroyos de Pinho",
+      "birth": 1594339200000,
+      "gender": "M",
+      "services": "Crossfit, Musculação",
+      "created_at": 1593705212881
+    },
+    {
+      "id": 2,
+      "avatar_url": "https://google.com",
+      "name": "Lucas Montarroyos de Pinho",
+      "birth": 1594339200000,
+      "gender": "M",
+      "services": "Crossfit, Musculação",
+      "created_at": 1593705228763
+    }
+  ]
+}

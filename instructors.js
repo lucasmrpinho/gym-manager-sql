@@ -1,5 +1,7 @@
+const Intl = require('intl')
 const fs = require('fs')
 const data = require('./data.json')
+const { age, date } = require('./utils')
 
 //SHOW
 exports.show = (req,res) =>{
@@ -15,9 +17,9 @@ exports.show = (req,res) =>{
 
     instructor = {
         ... foundInstructor,
-        age: "",
+        age: age(foundInstructor.birth),
         services: foundInstructor.services.split(', '),
-        created_at: "",
+        created_at: new Intl.DateTimeFormat('pt-BR').format(foundInstructor.created_at)
     }
 
     return res.render('instructors/show', {instructor})
@@ -54,4 +56,24 @@ exports.post = (req,res) =>{
 
         return res.redirect("instructors")
     })
+}
+
+//EDIT 
+exports.edit = (req,res) =>{
+    const { id } = req.params
+
+    const foundInstructor = data.instructors.find(function(instructor){
+        return instructor.id == id
+    })
+    
+    if (!foundInstructor){
+        return res.send("Instrutor não encontrado.")
+    }
+
+    instructor = {
+        ...foundInstructor,
+        birth: date(foundInstructor.birth)
+    }
+
+    return res.render('instructors/edit', { instructor })
 }

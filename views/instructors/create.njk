@@ -12,58 +12,7 @@
 
             <h3>Detalhes</h3>
 
-             <div class="item">
-                <div>Avatar URL</div>
-                <div>
-                    <input 
-                        type="url"
-                        name="avatar_url"
-                        placeholder="https://"
-                    >
-                </div>
-            </div>
-
-            <div class="item">
-                <div>Instrutor</div>
-                <div>
-                    <input 
-                        type="text"
-                        name="name"
-                        placeholder="Nome do instrutor"
-                    >
-                </div>
-            </div>
-
-            <div class="item">
-                <div>Data de nascimento</div>
-                <div>
-                    <input 
-                        type="date"
-                        name="birth"
-                    >
-                </div>
-            </div>
-
-            <div class="item">
-                <div>Sexo</div>
-                <div>
-                    <select name="gender">
-                        <option value="M" selected>Masculino</option>
-                        <option value="F" selected>Feminino</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="item">
-                <div>Área de atuação</div>
-                <div>
-                    <input type="text" name="services" 
-                    placeholder="Separe os serviços prestados por vírgula"
-                    >
-                </div>
-            </div>
-
-            <button type="submit">Salvar</button>
+           {% include 'instructors/fields.njk'%}
 
         </section>
 

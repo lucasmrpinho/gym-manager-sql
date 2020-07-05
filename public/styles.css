@@ -100,6 +100,7 @@ header {
 
 .details{
     padding: 32px;
+    position: relative;
 }
 
 .details .item{
@@ -107,7 +108,7 @@ header {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.details .item:last-child{
+.details .item:nth-child(6){    
     border: none;
 }
 
@@ -166,6 +167,7 @@ input::placeholder {
     font-weight: normal;
 }
 
+a.button,
 button[type="submit"]{
     background-color: var(--color-purple);
     padding: 8px 16px;
@@ -176,6 +178,19 @@ button[type="submit"]{
     font-size: 16px;
 }
 
+a.button,
 button[type="submit"]:hover{
     cursor: pointer;
+}
+
+a.button{
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+}
+
+#delete-form button{
+    margin-top: 8px;
+    background-color: lightcoral;
 }

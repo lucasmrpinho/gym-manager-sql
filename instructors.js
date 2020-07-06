@@ -3,6 +3,11 @@ const fs = require('fs')
 const data = require('./data.json')
 const { age, date } = require('./utils')
 
+
+exports.index = (req,res) =>{
+    return res.render('instructors/index', { instructors: data.instructors })
+}
+
 //SHOW
 exports.show = (req,res) =>{
     const { id } = req.params
@@ -18,7 +23,6 @@ exports.show = (req,res) =>{
     instructor = {
         ... foundInstructor,
         age: age(foundInstructor.birth),
-        services: foundInstructor.services.split(', '),
         created_at: new Intl.DateTimeFormat('pt-BR').format(foundInstructor.created_at)
     }
 
@@ -38,6 +42,7 @@ exports.post = (req,res) =>{
     let {avatar_url, name, birth, gender, services} = req.body
     
     birth = Date.parse(birth)
+    services = services.split(',')
     const id = Number(data.instructors.length + 1)
     const created_at = Date.now()
 
@@ -97,7 +102,9 @@ exports.put = (req,res) =>{
     instructor = {
         ...foundInstructor,
         ...req.body,
-        birth: Date.parse(req.body.birth)
+        birth: Date.parse(req.body.birth),
+        id: Number(req.body.id),
+        services: req.body.services.split(',')
     }
 
     data.instructors[index] = instructor 
@@ -114,7 +121,7 @@ exports.delete = (req,res) =>{
     const { id } = req.body
     let index = 0
 
-    const filteredInstructors = data.instructors.filter(function(instructor, foundIndex){
+    const filteredInstructors = data.instructors.filter(function(instructor){
         return instructor.id != id 
     })
 

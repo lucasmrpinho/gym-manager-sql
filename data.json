@@ -1,11 +1,15 @@
 {
-  "instructors": {
-    "id": 1,
-    "avatar_url": "https://google.com",
-    "name": "Lucas Montarroyos de Pinho",
-    "birth": 1594339200000,
-    "gender": "M",
-    "services": "Crossfit, Musculação",
-    "created_at": 1593705212881
-  }
+  "instructors": [
+    {
+      "id": 1,
+      "avatar_url": "https://hashtag.blogfolha.uol.com.br/files/2020/06/imagem-preta.jpg",
+      "name": "Lucas Pinho",
+      "birth": null,
+      "gender": "M",
+      "services": [
+        "Crossfit"
+      ],
+      "created_at": 1594065896258
+    }
+  ]
 }

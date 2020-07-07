@@ -1,4 +1,5 @@
 {
+  "members":[],
   "instructors": [
     {
       "id": 1,
@@ -7,7 +8,8 @@
       "birth": null,
       "gender": "M",
       "services": [
-        "Crossfit"
+        "Crossfit",
+        "Musculação"
       ],
       "created_at": 1594065896258
     }

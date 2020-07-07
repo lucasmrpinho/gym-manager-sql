@@ -1,0 +1,78 @@
+<div class="item">
+                <div>Avatar URL</div>
+                <div>
+                    <input 
+                        type="url"
+                        name="avatar_url"
+                        placeholder="https://"
+                        value="{{ member.avatar_url }}"
+                    >
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Nome</div>
+                <div>
+                    <input 
+                        type="text"
+                        name="name"
+                        value="{{ member.name }}"
+                    >
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Email</div>
+                <div>
+                    <input 
+                        type="email"
+                        name="email"
+                        value="{{ member.email }}"
+                    >
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Data de nascimento</div>
+                <div>
+                    <input 
+                        type="date"
+                        name="birth"
+                        value="{{ member.birth }}"
+                    >
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Sexo</div>
+                <div>
+                    <select name="gender">
+                        <option value="M" {% if member.gender == "M" %} selected {% endif %}>Masculino</option>
+                        <option value="F" {% if member.gender == "F" %} selected {% endif %}>Feminino</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Peso (Kg)</div>
+                <div>
+                    <input 
+                        type="number"
+                        name="weight"
+                        value="{{ member.weight }}"
+                    >
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Altura (Metros)</div>
+                <div>
+                    <input 
+                        type="number"
+                        name="height"
+                        value="{{ member.height }}"
+                    >
+                </div>
+            </div>
+
+            <button type="submit">Salvar</button>

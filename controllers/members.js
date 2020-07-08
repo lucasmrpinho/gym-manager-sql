@@ -1,7 +1,7 @@
 const Intl = require('intl')
 const fs = require('fs')
 const data = require('../data.json')
-const { age, date } = require('../utils')
+const { date } = require('../utils')
 
 
 exports.index = (req,res) =>{
@@ -22,7 +22,7 @@ exports.show = (req,res) =>{
 
     member = {
         ... foundMember,
-        age: age(foundMember.birth),
+        birth: date(foundMember.birth).birthDay,
         created_at: new Intl.DateTimeFormat('pt-BR').format(foundMember.created_at)
     }
 
@@ -48,7 +48,7 @@ exports.post = (req,res) =>{
     birth = Date.parse(birth)
    
     let id = 1
-    const lastMember = data.members[data.members.length - 1].id
+    const lastMember = data.members[data.members.length - 1]
 
     if(lastMember){
         id = lastMember.id + 1
@@ -86,7 +86,7 @@ exports.edit = (req,res) =>{
 
     member = {
         ...foundMember,
-        birth: date(foundMember.birth)
+        birth: date(foundMember.birth).iso
     }
 
     return res.render('members/edit', { member })
@@ -113,7 +113,6 @@ exports.put = (req,res) =>{
         ...req.body,
         birth: Date.parse(req.body.birth),
         id: Number(req.body.id),
-        services: req.body.services.split(',')
     }
 
     data.members[index] = member 

@@ -4,10 +4,22 @@ const Instructor = require('../model/Instructor')
 
 module.exports = {
     index(req, res){
-       Instructor.all(function(instructors){
-            return res.render('instructors/index', { instructors })
-       })
+
+        const { filter } = req.query;
+
+        if ( filter ) {
+            Instructor.findBy(filter, function(instructors){
+                return res.render('instructors/index', { instructors, filter })
+            })
+
+        } else {
+            Instructor.all(function(instructors){
+                return res.render('instructors/index', { instructors })
+           })
+        }
+
     },
+
     show(req, res){
         Instructor.find(req.params.id, function(instructor){
             if (!instructor) return res.send("Instructor noot found!")
@@ -19,9 +31,11 @@ module.exports = {
             return res.render("instructors/show", { instructor })
         })
     },
+
     create(req, res){
         return res.render('instructors/create')
     },
+
     post(req, res){
         const keys = Object.keys(req.body)
 
@@ -37,6 +51,7 @@ module.exports = {
             return res.redirect(`/instructors/${instructor.id}`)
         })
     },
+    
     edit(req, res){
         Instructor.find(req.params.id, function(instructor){
             if (!instructor) return res.send("Instructor not found!")
@@ -46,6 +61,7 @@ module.exports = {
             return res.render("instructors/edit", { instructor })
         })
     },
+
     put(req, res){
         const keys = Object.keys(req.body)
 
@@ -61,6 +77,7 @@ module.exports = {
             return res.redirect(`/instructors/${req.body.id}`)
         })
     },
+
     delete(req, res){
         Instructor.delete(req.body.id, function(){
             return res.redirect(`/instructors`)

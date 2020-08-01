@@ -10,7 +10,7 @@
                 <input
                     type="text"
                     name="filter"
-                    placeholder="Filtrar por Nome"
+                    placeholder="Filtrar por Nome ou Serviço"
                     value="{{filter}}"
                     >
 
@@ -43,6 +43,12 @@
                 {% endfor %}
             </tbody>
         </table>
+
+        <div class="pagination"
+            data-page={{pagination.page}}
+            data-total={{pagination.total}}
+            data-filter={{filter}}
+        ></div>
 
     </div>
 
